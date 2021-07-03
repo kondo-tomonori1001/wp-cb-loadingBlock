@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,8 +11,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { PanelBody, ColorPicker } from "@wordpress/components";
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import { PanelBody, ColorPicker, TextControl } from "@wordpress/components";
+import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,7 +20,7 @@ import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import "./editor.scss";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -30,39 +30,71 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit({attributes,setAttributes}) {
-  const blockProps = useBlockProps();
-	const { bgColor, squareColor, textColor } = attributes;
+export default function Edit({ attributes, setAttributes }) {
+	const blockProps = useBlockProps();
+	const { bgColor, squareColor, text, delay } = attributes;
 	console.log(bgColor);
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title="背景色の設定" initialOpen={ false }>
+				<PanelBody title="背景色の設定" initialOpen={false}>
 					<ColorPicker
 						disableAlpha={true}
-						onChangeComplete={(value) => setAttributes({bgColor:value.hex})}
+						color={attributes.bgColor}
+						onChangeComplete={(value) => setAttributes({ bgColor: value.hex })}
 					/>
 				</PanelBody>
-				<PanelBody title="回転する小さい四角形の色設定" initialOpen={ false }>
+				<PanelBody title="回転する小さい四角形の色設定" initialOpen={false}>
 					<ColorPicker
 						disableAlpha={true}
-						onChangeComplete={(value) => setAttributes({squareColor:value.hex})}
+						color={attributes.squareColor}
+						onChangeComplete={(value) =>
+							setAttributes({ squareColor: value.hex })
+						}
+					/>
+				</PanelBody>
+				<PanelBody title="テキストの設定" initialOpen={false}>
+					<TextControl
+						value={attributes.text}
+						onChange={(value) => setAttributes({ text: value })}
+					/>
+				</PanelBody>
+				<PanelBody title="ローディングの遅延時間（秒）" initialOpen={false}>
+					<p>※半角数字で入力してください</p>
+					<TextControl
+						value={attributes.delay}
+						onChange={(value) => setAttributes({ delay: value })}
 					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...blockProps}>
-			  <div className="p-loading is-edit" style={{backgroundColor:bgColor}}>
-	  			<div class="p-loading__square">
-	      		<span class="p-loading__square1" style={{backgroundColor:squareColor}}></span>
-	      		<span class="p-loading__square2" style={{backgroundColor:squareColor}}></span>
-	      		<span class="p-loading__square3" style={{backgroundColor:squareColor}}></span>
-	      		<span class="p-loading__square4" style={{backgroundColor:squareColor}}></span>
-	    		</div>
-	        <p class="p-loading__text">
-						LOADING ...
-						<span className="p-loading__text__cover" style={{backgroundColor:bgColor}}></span>
+				<div className="p-loading is-edit" style={{ backgroundColor: bgColor }}>
+					<div class="p-loading__square">
+						<span
+							class="p-loading__square1"
+							style={{ backgroundColor: squareColor }}
+						></span>
+						<span
+							class="p-loading__square2"
+							style={{ backgroundColor: squareColor }}
+						></span>
+						<span
+							class="p-loading__square3"
+							style={{ backgroundColor: squareColor }}
+						></span>
+						<span
+							class="p-loading__square4"
+							style={{ backgroundColor: squareColor }}
+						></span>
+					</div>
+					<p class="p-loading__text" style={{ color: squareColor }}>
+						{text}
+						<span
+							className="p-loading__text__cover"
+							style={{ backgroundColor: bgColor }}
+						></span>
 					</p>
-	  		</div>
+				</div>
 			</div>
 		</>
 	);

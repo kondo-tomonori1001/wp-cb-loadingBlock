@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps } from "@wordpress/block-editor";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -22,16 +22,35 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save({attributes}) {
+	const { bgColor, squareColor, text, delay } = attributes;
 	return (
-		<div className="p-loading is-loading">
+		<div className="p-loading is-loading" data-delay={delay} style={{ backgroundColor: bgColor }}>
 			<div class="p-loading__square">
-    		<span class="p-loading__square p-loading__square1"></span>
-    		<span class="p-loading__square p-loading__square2"></span>
-    		<span class="p-loading__square p-loading__square3"></span>
-    		<span class="p-loading__square p-loading__square4"></span>
-  		</div>
-      <p class="p-loading__text">LOADING ...</p>
+				<span
+					class="p-loading__square1"
+					style={{ backgroundColor: squareColor }}
+				></span>
+				<span
+					class="p-loading__square2"
+					style={{ backgroundColor: squareColor }}
+				></span>
+				<span
+					class="p-loading__square3"
+					style={{ backgroundColor: squareColor }}
+				></span>
+				<span
+					class="p-loading__square4"
+					style={{ backgroundColor: squareColor }}
+				></span>
+			</div>
+			<p class="p-loading__text" style={{ color: squareColor }}>
+				{text}
+				<span
+					className="p-loading__text__cover"
+					style={{ backgroundColor: bgColor }}
+				></span>
+			</p>
 		</div>
 	);
 }

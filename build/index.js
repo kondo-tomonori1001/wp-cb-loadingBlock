@@ -234,7 +234,8 @@ function Edit({
   const {
     bgColor,
     squareColor,
-    textColor
+    text,
+    delay
   } = attributes;
   console.log(bgColor);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
@@ -242,6 +243,7 @@ function Edit({
     initialOpen: false
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ColorPicker"], {
     disableAlpha: true,
+    color: attributes.bgColor,
     onChangeComplete: value => setAttributes({
       bgColor: value.hex
     })
@@ -250,8 +252,25 @@ function Edit({
     initialOpen: false
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["ColorPicker"], {
     disableAlpha: true,
+    color: attributes.squareColor,
     onChangeComplete: value => setAttributes({
       squareColor: value.hex
+    })
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
+    title: "\u30C6\u30AD\u30B9\u30C8\u306E\u8A2D\u5B9A",
+    initialOpen: false
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["TextControl"], {
+    value: attributes.text,
+    onChange: value => setAttributes({
+      text: value
+    })
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["PanelBody"], {
+    title: "\u30ED\u30FC\u30C7\u30A3\u30F3\u30B0\u306E\u9045\u5EF6\u6642\u9593\uFF08\u79D2\uFF09",
+    initialOpen: false
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "\u203B\u534A\u89D2\u6570\u5B57\u3067\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["TextControl"], {
+    value: attributes.delay,
+    onChange: value => setAttributes({
+      delay: value
     })
   }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "p-loading is-edit",
@@ -281,8 +300,11 @@ function Edit({
       backgroundColor: squareColor
     }
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
-    class: "p-loading__text"
-  }, "LOADING ...", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
+    class: "p-loading__text",
+    style: {
+      color: squareColor
+    }
+  }, text, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
     className: "p-loading__text__cover",
     style: {
       backgroundColor: bgColor
@@ -403,22 +425,54 @@ __webpack_require__.r(__webpack_exports__);
  * @return {WPElement} Element to render.
  */
 
-function save() {
+function save({
+  attributes
+}) {
+  const {
+    bgColor,
+    squareColor,
+    text,
+    delay
+  } = attributes;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    className: "p-loading is-loading"
+    className: "p-loading is-loading",
+    "data-delay": delay,
+    style: {
+      backgroundColor: bgColor
+    }
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     class: "p-loading__square"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
-    class: "p-loading__square p-loading__square1"
+    class: "p-loading__square1",
+    style: {
+      backgroundColor: squareColor
+    }
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
-    class: "p-loading__square p-loading__square2"
+    class: "p-loading__square2",
+    style: {
+      backgroundColor: squareColor
+    }
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
-    class: "p-loading__square p-loading__square3"
+    class: "p-loading__square3",
+    style: {
+      backgroundColor: squareColor
+    }
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
-    class: "p-loading__square p-loading__square4"
+    class: "p-loading__square4",
+    style: {
+      backgroundColor: squareColor
+    }
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
-    class: "p-loading__text"
-  }, "LOADING ..."));
+    class: "p-loading__text",
+    style: {
+      color: squareColor
+    }
+  }, text, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
+    className: "p-loading__text__cover",
+    style: {
+      backgroundColor: bgColor
+    }
+  })));
 }
 
 /***/ }),

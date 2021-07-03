@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name:       Loading Block
- * Description:       Example block written with ESNext standard and JSX support – build step required.
+ * Description:       ローディング画面を導入するためのブロックです。背景画像、回転する四角形の色をカスタムできます。
  * Requires at least: 5.7
  * Requires PHP:      7.0
- * Version:           0.1.0
+ * Version:           1.0.0
  * Author:            KON
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html

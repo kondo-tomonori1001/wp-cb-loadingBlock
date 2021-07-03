@@ -21,9 +21,13 @@
 			"type": "string",
 			"default":"#fff"
 		},
-		"textColor": {
+		"text": {
 			"type": "string",
-			"default":"#fff"
+			"default":"LOADING..."
+		},
+		"delay": {
+			"type": "string",
+			"default":"2"
 		}
 	}
 }
