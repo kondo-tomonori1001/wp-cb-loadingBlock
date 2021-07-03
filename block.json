@@ -1,15 +1,29 @@
 {
 	"apiVersion": 2,
 	"name": "create-block/loadig-block",
-	"title": "Loadig Block",
+	"title": "Loading Block",
 	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"icon": "image-rotate",
+	"description": "ローディング画面を導入するためのブロックです。背景画像、回転する四角形の色をカスタムできます。",
 	"supports": {
 		"html": false
 	},
 	"textdomain": "loadig-block",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css"
+	"style": "file:./build/style-index.css",
+	"attributes": {
+		"bgColor": {
+			"type": "string",
+			"default":"#333"
+		},
+		"squareColor": {
+			"type": "string",
+			"default":"#fff"
+		},
+		"textColor": {
+			"type": "string",
+			"default":"#fff"
+		}
+	}
 }

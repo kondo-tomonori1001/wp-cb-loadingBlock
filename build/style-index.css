@@ -95,8 +95,8 @@
   margin-top: 10px;
   font-weight: 600;
 }
-.p-loading__text:before {
-  content: "";
+
+.p-loading__text__cover {
   position: absolute;
   right: 0;
   top: 0;
