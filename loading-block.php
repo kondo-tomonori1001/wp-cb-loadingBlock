@@ -27,9 +27,10 @@ add_action( 'init', 'create_block_loadig_block_block_init' );
 
 // JSフック
 function add_js(){
+	$url = __DIR__;
 	wp_enqueue_script(
 		'loadingBlock',
-		plugins_url('/loading-block/loadingBlock.js'),
+		untrailingslashit( plugin_dir_url( __FILE__ ) ) . '/loadingBlock.js',
 		array(),
 		false,
 		true
